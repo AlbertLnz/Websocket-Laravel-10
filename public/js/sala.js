@@ -67,6 +67,19 @@ function appendMessage(name, img, side, text, date){
     scrollToButtom()
 }
 
+function appendMessages(messages){
+    let side = 'left';
+    messages.forEach(message => {
+        side = (message.user_id == authUser.id) ? 'right' : 'left';
+        appendMessage(
+            message.user.name,
+            PERSON_IMG,
+            side,
+            message.content,
+            formatDate(new Date(message.created_at))
+        )
+    })
+}
 
 // Laravel Echo
 Echo.join(`sala.${salaId}`).listen('MessageSent', (e) => {
