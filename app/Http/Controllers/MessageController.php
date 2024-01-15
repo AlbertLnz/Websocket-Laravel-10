@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\MessageSent;
 use Illuminate\Http\Request;
 
 class MessageController extends Controller
@@ -15,6 +16,8 @@ class MessageController extends Controller
             'content' => $request->message,
             'sala_id' => $request->sala_id
         ])->load('user');
+
+        broadcast(new MessageSent($message))->toOthers();
 
         return $message;
     }
