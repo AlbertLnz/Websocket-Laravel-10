@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SalaController;
+use App\Http\Controllers\MessageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,3 +34,5 @@ require __DIR__.'/auth.php';
 
 Route::get('sala/with/{user}', [SalaController::class, 'salaWith'])->name('sala.with');
 Route::get('sala/{sala_id}', [SalaController::class, 'show'])->name('sala.show')->middleware('auth');
+
+Route::post('message/sent', [MessageController::class, 'sent'])->name('message.sent');
