@@ -34,4 +34,11 @@ class SalaController extends Controller
             'sala' => $sala
         ]);
     }
+
+    public function getUsers(Sala $sala_id){
+        $users = $sala_id->users()->get();
+        return response()->json([
+            'users' => $users
+        ]);
+    }
 }

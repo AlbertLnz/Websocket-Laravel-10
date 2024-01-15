@@ -45,3 +45,5 @@ Route::get('/auth/user', function () {
     }
     return null;
 });
+
+Route::get('sala/{sala_id}/getUsers', [SalaController::class, 'getUsers'])->name('sala.getusers');
