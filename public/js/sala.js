@@ -6,6 +6,13 @@ const chatWith = get('.chatWith')
 const typing = get('.typing')
 const chatStatus = get('.chatStatus')
 const salaId = window.location.pathname.substring(6)
+let authUser
+
+window.onload = function(){
+    axios.get('/auth/user').then(res => {
+        authUser = res.data.authUser
+    })
+}
 
 msgerForm.addEventListener("submit", event => {
     event.preventDefault()
