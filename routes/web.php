@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SalaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,3 +30,6 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::get('sala/with/{user}', [SalaController::class, 'salaWith'])->name('sala.with');
+Route::get('sala/{sala_id}', [SalaController::class, 'show'])->name('sala.show')->middleware('auth');
