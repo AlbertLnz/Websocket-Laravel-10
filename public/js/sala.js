@@ -22,7 +22,7 @@ msgerForm.addEventListener("submit", event => {
 
     axios.post('/message/sent', {
         message: msgText,
-        sala_id: 1 // FIX TO DO IT DYNAMICALLY
+        sala_id: salaId
     }).then(res => {
         // console.log(res)
         let data = res.data
