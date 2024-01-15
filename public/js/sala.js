@@ -12,7 +12,14 @@ msgerForm.addEventListener("submit", event => {
     const msgText = msgerInput.value
     if(!msgText) return
 
-    /* LARAVEL ECHO TO IMPLEMENT */
+    axios.post('/message/sent', {
+        message: msgText,
+        sala_id: 1 // FIX TO DO IT DYNAMICALLY
+    }).then(res => {
+        console.log(res)
+    }).catch(error => {
+        console.error(error)
+    })
 
     msgerInput.value = ""
 })
