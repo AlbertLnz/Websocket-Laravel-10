@@ -16,7 +16,15 @@ msgerForm.addEventListener("submit", event => {
         message: msgText,
         sala_id: 1 // FIX TO DO IT DYNAMICALLY
     }).then(res => {
-        console.log(res)
+        // console.log(res)
+        let data = res.data
+        appendMessage(
+            data.user.name,
+            PERSON_IMG,
+            'right',
+            data.content,
+            formatDate(new Date(data.created_at))
+        )
     }).catch(error => {
         console.error(error)
     })
