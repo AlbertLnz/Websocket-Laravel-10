@@ -47,3 +47,5 @@ Route::get('/auth/user', function () {
 });
 
 Route::get('sala/{sala_id}/getUsers', [SalaController::class, 'getUsers'])->name('sala.getusers');
+
+Route::get('salaa/{sala_id}/getMessages', [SalaController::class, 'getMessages'])->name('sala.get.messages');

@@ -41,4 +41,12 @@ class SalaController extends Controller
             'users' => $users
         ]);
     }
+
+    public function getMessages(Sala $sala_id){
+        $messages = $sala_id->messages()->with('user')->get();
+
+        return response()->json([
+            'messages' => $messages
+        ]);
+    }
 }
