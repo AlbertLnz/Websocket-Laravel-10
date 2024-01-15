@@ -18,6 +18,10 @@ window.onload = function(){
                 chatWith.innerHTML = results[0].name
             }
         })
+    }).then(() => {
+        axios.get(`/sala/${salaId}/getMessages`).then(res => {
+            appendMessages(res.data.messages)
+        })
     })
 }
 
