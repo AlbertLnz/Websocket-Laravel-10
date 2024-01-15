@@ -36,3 +36,12 @@ Route::get('sala/with/{user}', [SalaController::class, 'salaWith'])->name('sala.
 Route::get('sala/{sala_id}', [SalaController::class, 'show'])->name('sala.show')->middleware('auth');
 
 Route::post('message/sent', [MessageController::class, 'sent'])->name('message.sent');
+
+Route::get('/auth/user', function () {
+    if (auth()->check()) {
+        return response()->json([
+            'authUser' => auth()->user()
+        ]);
+    }
+    return null;
+});
