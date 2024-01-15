@@ -5,6 +5,7 @@ const PERSON_IMG = 'https://svgrepo.com/show/382109/male-avatar-boy-face-man-use
 const chatWith = get('.chatWith')
 const typing = get('.typing')
 const chatStatus = get('.chatStatus')
+const salaId = window.location.pathname.substring(6)
 
 msgerForm.addEventListener("submit", event => {
     event.preventDefault()
@@ -52,6 +53,11 @@ function appendMessage(name, img, side, text, date){
     msgerChat.scrollTop += 500; // FIX THIS RELATIVE VALUE
 }
 
+
+// Laravel Echo
+Echo.join(`sala.${salaId}`).listen('MessageSent', (e) => {
+    console.log(e)
+})
 
 // Utils
 function get(selector, root = document){
