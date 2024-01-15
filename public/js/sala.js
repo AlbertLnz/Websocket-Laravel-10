@@ -64,7 +64,7 @@ function appendMessage(name, img, side, text, date){
     `;
 
     msgerChat.insertAdjacentHTML('beforeend', msgHTML);
-    msgerChat.scrollTop += 500; // FIX THIS RELATIVE VALUE
+    scrollToButtom()
 }
 
 
@@ -86,4 +86,8 @@ function formatDate(date){
     const m = "0" + date.getMinutes();
 
     return `${d}/${mo}/${y} ${h.slice(-2)}:${m.slice(-2)}`
+}
+
+function scrollToButtom(){
+    msgerChat.scrollTop = msgerChat.scrollHeight
 }
