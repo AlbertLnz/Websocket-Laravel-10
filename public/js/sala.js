@@ -32,6 +32,11 @@ window.onload = function(){
                 formatDate(new Date(e.message.created_at))
             )
         })
+    }).here(users => {
+        let result = users.filter(user => user.id != authUser.id)
+        if(result.length > 0){
+            chatStatus.className = 'chatStatus online'
+        }
     })
 }
 
