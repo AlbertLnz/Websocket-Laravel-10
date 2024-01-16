@@ -24,7 +24,13 @@ window.onload = function(){
         })
     }).then(() => {
         Echo.join(`sala.${salaId}`).listen('MessageSent', (e) => {
-            console.log(e)
+            appendMessage(
+                e.message.user.name,
+                PERSON_IMG,
+                'left',
+                e.message.content,
+                formatDate(new Date(e.message.created_at))
+            )
         })
     })
 }
