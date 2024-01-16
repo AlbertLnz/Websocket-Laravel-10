@@ -7,6 +7,7 @@ const typing = get('.typing')
 const chatStatus = get('.chatStatus')
 const salaId = window.location.pathname.substring(6)
 let authUser
+let typingTimer = false
 
 window.onload = function(){
     axios.get('/auth/user').then(res => {
@@ -45,6 +46,8 @@ window.onload = function(){
         if(user.id != authUser.id){
             chatStatus.className = 'chatStatus offline'
         }
+    }).listenForWhisper('typing', e => {
+        console.log(e)
     })
 }
 
@@ -130,4 +133,9 @@ function formatDate(date){
 
 function scrollToButtom(){
     msgerChat.scrollTop = msgerChat.scrollHeight
+}
+
+function sendTypingEvent(){
+    typingTimer = true
+    Echo.join(`sala.${salaId}`).whisper('typing', msgerInput.value.length)
 }
