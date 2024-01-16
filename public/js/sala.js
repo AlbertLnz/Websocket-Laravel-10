@@ -22,6 +22,10 @@ window.onload = function(){
         axios.get(`/sala/${salaId}/getMessages`).then(res => {
             appendMessages(res.data.messages)
         })
+    }).then(() => {
+        Echo.join(`sala.${salaId}`).listen('MessageSent', (e) => {
+            console.log(e)
+        })
     })
 }
 
