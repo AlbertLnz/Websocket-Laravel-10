@@ -37,6 +37,10 @@ window.onload = function(){
         if(result.length > 0){
             chatStatus.className = 'chatStatus online'
         }
+    }).joining(user => {
+        if(user.id != authUser.id){
+            chatStatus.className = 'chatstatus online'
+        }
     })
 }
 
