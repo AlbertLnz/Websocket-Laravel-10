@@ -41,6 +41,10 @@ window.onload = function(){
         if(user.id != authUser.id){
             chatStatus.className = 'chatstatus online'
         }
+    }).leaving(user => {
+        if(user.id != authUser.id){
+            chatStatus.className = 'chatStatus offline'
+        }
     })
 }
 
