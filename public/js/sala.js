@@ -47,7 +47,17 @@ window.onload = function(){
             chatStatus.className = 'chatStatus offline'
         }
     }).listenForWhisper('typing', e => {
-        console.log(e)
+        if(e > 0){
+            typing.style.display = ''
+        }
+        if(typingTimer){
+            clearTimeout(typingTimer)
+        }
+
+        typingTimer = setTimeout(() => {
+            typing.style.display = 'none'
+            typingTimer = false
+        }, 3000)
     })
 }
 
